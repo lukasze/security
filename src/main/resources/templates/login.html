@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Layout</title>
+</head>
+<body>
+<div class="container">
+    <h1>Login page</h1>
+
+    <!--
+            TODO 4 przetestuj jak zachowuje się loginPage, gdy podamy niepoprawne dane - zabserwuj url w przeglądarce,
+             jak się zmienia, gdy wpiszemy niepoprawne dane
+
+
+            Brak info o błędzie logowania - utwórz div, który będzie wyświetlał komunikat  dla niepoprawnych danych:
+
+            użyj thymeleaf th:if - wykorzytaj parametr pojawiający się w url'u przy niepoprawnych danych
+    -->
+    <div th:if="${param.error}" class="alert alert-danger">Invalid credentials !</div>
+
+    <!--TODO 2 ustawth:action: ma przekierowywać na /login -  ten sam url będzie użyty w konfiguracji AppSecurityConfig-->
+    <form th:action="@{/login}" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-xs-2" for="username"> User Name: </label>
+
+            <div class="col-xs-10">
+                <input id="username" type="text" name="username"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-2" for="password"> Password: </label>
+
+            <div class="col-xs-10">
+                <input id="password" type="password" name="password"/>
+            </div>
+        </div>
+        <div class="form-actions col-xs-offset-2 col-xs-10">
+            <input type="submit" class="btn btn-primary" value="Sign In"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>
