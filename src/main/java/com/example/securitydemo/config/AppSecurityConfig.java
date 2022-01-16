@@ -23,12 +23,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .password("password")
                 .roles("USER")
                 .build();
-        UserDetails admin = users
-                .username("admin")
-                .password("password")
-                .roles("USER", "ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(user, admin);
+        return new InMemoryUserDetailsManager(user);
     }
 
     @Override
@@ -47,10 +42,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                  */
         http
                 .authorizeRequests()
-                .antMatchers("/delete/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll();
+                .formLogin();
     }
 }
 

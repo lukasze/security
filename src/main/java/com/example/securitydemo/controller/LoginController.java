@@ -9,10 +9,5 @@ import org.springframework.web.servlet.ModelAndView;
 
         Utwórz kontroler: /login przekierowuje na login.html (html jest już dodany w resources/templates)
  */
-@RestController
 public class LoginController {
-    @GetMapping("/login")
-    public ModelAndView list(){
-        return new ModelAndView("login");
-    }
 }
