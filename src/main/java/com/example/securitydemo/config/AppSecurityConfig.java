@@ -26,15 +26,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
     - Pomocne podczas testów: Jeśli chcesz się wylogować z aplikacji: localhost:8080/logout
       to domyślny adres w spring security, przekieruje na odpowiednią stroną i wyczyści sesję
  */
-@Configuration
-public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder authBuilder) throws Exception {
-        authBuilder
-                .inMemoryAuthentication()
-                .withUser("user")
-                .password("{noop}password")
-                .roles("USER");
-    }
+public class AppSecurityConfig {
+
 }
 
